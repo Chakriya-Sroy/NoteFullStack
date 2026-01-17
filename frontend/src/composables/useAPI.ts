@@ -1,14 +1,14 @@
 export const apiFetch = async <T>(
   path: string,
-  options: RequestInit = {}
+  options: RequestInit = {},
 ): Promise<T> => {
-
   const api = import.meta.env.VITE_API_URL;
-  
+
   const response = await fetch(`${api}${path}`, {
     ...options,
     headers: {
       "Content-Type": "application/json",
+      "ngrok-skip-browser-warning": "true",
       ...(options.headers || {}),
     },
   });
